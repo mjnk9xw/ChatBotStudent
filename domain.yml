@@ -1,31 +1,39 @@
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
 intents:
-  - greet
-  - goodbye
-  - mood_affirm
-  - mood_deny
-  - mood_great
-  - mood_unhappy
-
+- greet
+- goodbye
+- thankyou
+- praise
+- decry
+- ask_for_lunch
+- ask_ability
+responses:
+  utter_greet:
+  - text: "Em chào anh(chị) ạ. \nEm là chatbot được thiết kế để giúp anh chị quyết\
+      \ định 'trưa nay ăn gì?' ạ"
+  utter_goodbye:
+  - image: https://i.imgur.com/nGF1K8f.jpg
+    text: Hẹn gặp lại anh chị ạ ^^
+  utter_happy:
+  - text: Hì hì, anh chị khen quá lơì rồi ạ
+  utter_sorry:
+  - text: Em xin lôĩ vì em chưa đủ thông minh ạ =(((
+  utter_noworries:
+  - text: Em luôn sẵn lòng giúp đỡ anh(chị) bất cứ lúc nào ạ ^^
+  utter_show_ability:
+  - text: Em có thể trò chuyện với anh(chị), thi thoảng có thể đề xuất anh(chị) nên
+      ăn gì trưa nay ạ
+  utter_fallback:
+  - text: Em xin lỗi, em chưa hiểu ý muốn của anh(chị) ạ. Anh chị có thể nói lại được
+      không ạ
 actions:
 - utter_greet
-- utter_cheer_up
-- utter_did_that_help
 - utter_happy
 - utter_goodbye
-
-templates:
-  utter_greet:
-  - text: "Hey! How are you?"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great carry on!"
-
-  utter_goodbye:
-  - text: "Bye"
+- utter_sorry
+- utter_noworries
+- action_recommend
+- utter_show_ability
+- utter_fallback

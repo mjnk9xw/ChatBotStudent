@@ -1,27 +1,27 @@
-## happy path
+## greet
 * greet
   - utter_greet
-* mood_great
-  - utter_happy
 
-## sad path 1
-* greet
-  - utter_greet
-* mood_unhappy
-  - utter_cheer_up
-  - utter_did_that_help
-* mood_affirm
-  - utter_happy
-
-## sad path 2
-* greet
-  - utter_greet
-* mood_unhappy
-  - utter_cheer_up
-  - utter_did_that_help
-* mood_deny
-  - utter_goodbye
-
-## say goodbye
+## goodbye
 * goodbye
   - utter_goodbye
+
+## thankyou
+* thankyou
+  - utter_noworries
+
+## ask ability
+* ask_ability
+  - utter_show_ability
+
+## praise
+* praise
+  - utter_happy
+
+## decry
+* decry
+  - utter_sorry
+
+## ask_for_lunch
+* ask_for_lunch
+  - action_recommend
