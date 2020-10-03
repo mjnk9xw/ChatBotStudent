@@ -7,12 +7,25 @@ intents:
 - thankyou
 - praise
 - decry
-- ask_for_lunch
 - ask_ability
+- school_rules
+- school_score
+- school_new
+- school_web
+- school_schedule
+- school_student_info
+- school_introduce
+- school_intership
+entities:
+- msv
+- name
+- class
+- time
+- pwd
 responses:
   utter_greet:
-  - text: "Em chào anh(chị) ạ. \nEm là chatbot được thiết kế để giúp anh chị quyết\
-      \ định 'trưa nay ăn gì?' ạ"
+  - text: "Em chào anh(chị) ạ. \nEm là chatbot được thiết kế để giúp anh chị giải\
+      \ quyết những thắc mắc trong phạm vi trường học"
   utter_goodbye:
   - image: https://i.imgur.com/nGF1K8f.jpg
     text: Hẹn gặp lại anh chị ạ ^^
@@ -23,17 +36,45 @@ responses:
   utter_noworries:
   - text: Em luôn sẵn lòng giúp đỡ anh(chị) bất cứ lúc nào ạ ^^
   utter_show_ability:
-  - text: Em có thể trò chuyện với anh(chị), thi thoảng có thể đề xuất anh(chị) nên
-      ăn gì trưa nay ạ
+  - text: Em có thể giải quyết một số thắc mắc hoặc xem những thông tin mới nhất trong
+      phạm vi trường học. Hihi !!!
   utter_fallback:
   - text: Em xin lỗi, em chưa hiểu ý muốn của anh(chị) ạ. Anh chị có thể nói lại được
       không ạ
+  utter_school_rules:
+  - text: Chức năng đang hoàn thiện
+  utter_school_score:
+  - text: Anh chị xin vui lòng cho em thông tin anh chị với ạ, hoặc anh chị có thể
+      tự vào trang  dangkyhoc.mta.edu.vn để xem kết quả học tập của mình ở các kì.
+  utter_school_new:
+  - text: Chức năng đang hoàn thiện
+  utter_school_web:
+  - text: 'Hiện tại trường đang có 3 trang web chính là:  mta.edu.vn trang chủ của
+      trường,  dangkyhoc.mta.edu.vn là trang đăng kí học và xem kết quả học tập,  hoctructuyen.mta.edu.vn
+      là trang học online.'
+  utter_school_schedule:
+  - text: Chức năng đang hoàn thiện
+  utter_school_student_info:
+  - text: Chức năng đang hoàn thiện
+  utter_school_introduce:
+  - text: Em là con bot được tạo ra từ chủ nhân Minh thuộc trường Học viện kỹ thuật
+      quân sự , hiện tại em đang được 1 ngày tuổi và tiếp tục phát triển hơn,  nếu
+      anh(chị) muốn biết thêm chi tiết khác xin vui lòng vào trang mta.edu.vn.
+  utter_school_intership:
+  - text: Chức năng đang hoàn thiện
 actions:
 - utter_greet
 - utter_happy
 - utter_goodbye
 - utter_sorry
 - utter_noworries
-- action_recommend
 - utter_show_ability
 - utter_fallback
+- utter_school_rules
+- utter_school_score
+- utter_school_new
+- utter_school_web
+- utter_school_schedule
+- utter_school_student_info
+- utter_school_introduce
+- utter_school_intership
