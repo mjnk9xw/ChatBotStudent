@@ -7,6 +7,8 @@ intents:
 - thankyou
 - praise
 - decry
+- getinfo
+- setbot
 - ask_ability
 - school_rules
 - school_score
@@ -16,16 +18,47 @@ intents:
 - school_student_info
 - school_introduce
 - school_intership
+- list_subjects
+- list_teacher
+- inform
+- search_mon_hoc_infor
+- search_teacher_infor
 entities:
+- name_chat
+- name_user_chat
 - msv
 - name
 - class
 - time
 - pwd
+- ho_ten
+- ma_mon_hoc
+- mon_hoc
+- ten
+slots:
+  class:
+    type: text
+  ho_ten:
+    type: unfeaturized
+  ma_mon_hoc:
+    type: unfeaturized
+  mon_hoc:
+    type: unfeaturized
+  msv:
+    type: text
+  name:
+    type: text
+  name_chat:
+    type: text
+  name_user_chat:
+    type: text
+  ten:
+    type: unfeaturized
 responses:
   utter_greet:
   - text: "Em chào anh(chị) ạ. \nEm là chatbot được thiết kế để giúp anh chị giải\
-      \ quyết những thắc mắc trong phạm vi trường học"
+      \ quyết những thắc mắc trong phạm vi trường học,  anh chị cho em biết tên được\
+      \ không ạ ?"
   utter_goodbye:
   - image: https://i.imgur.com/nGF1K8f.jpg
     text: Hẹn gặp lại anh chị ạ ^^
@@ -33,6 +66,10 @@ responses:
   - text: Hì hì, anh chị khen quá lơì rồi ạ
   utter_sorry:
   - text: Em xin lôĩ vì em chưa đủ thông minh ạ =(((
+  utter_getinfo:
+  - text: Vâng em xin chào lại anh/chị {name_user_chat}.
+  utter_setbot:
+  - text: Vâng em tên là {name_chat}, đúng không anh/chị {name_user_chat}.
   utter_noworries:
   - text: Em luôn sẵn lòng giúp đỡ anh(chị) bất cứ lúc nào ạ ^^
   utter_show_ability:
@@ -62,6 +99,13 @@ responses:
       anh(chị) muốn biết thêm chi tiết khác xin vui lòng vào trang mta.edu.vn.
   utter_school_intership:
   - text: Chức năng đang hoàn thiện
+  utter_list_subjects:
+  - text: Hiện tại kì này đang có 10 môn học  - Cơ sở dữ liệu - Phân tích thiết kế
+      hướng đối tượng - Hệ thống máy tính - Lý thuyết Hệ điều hành - Hệ quản trị CSDL
+      - Công nghệ phần mềm - Đồ án thực tập lập trình A - Tự chọn bắt buộc 1 - Giải
+      tích 1 - Tiếng Anh ứng dụng quốc tế 3 và 4
+  utter_list_teacher:
+  - text: Hiện tại kì này đang có 2 giáo viên dạy là Thầy Trần Cao Trưởng và Thầy Nguyễn Trung Tín
 actions:
 - utter_greet
 - utter_happy
@@ -78,3 +122,8 @@ actions:
 - utter_school_student_info
 - utter_school_introduce
 - utter_school_intership
+- utter_getinfo
+- utter_setbot
+- utter_list_subjects
+- utter_list_teacher
+- action_search_infor
