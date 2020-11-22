@@ -1,22 +1,43 @@
-# Configuration for Rasa NLU.
-language: vi
-pipeline: supervised_embeddings
-# pipeline:
-# - name: "WhitespaceTokenizer"
-# - name: "RegexFeaturizer"
-# - name: "CRFEntityExtractor"
-# - name: "CountVectorsFeaturizer"
-# - name: "CountVectorsFeaturizer"
-#   analyzer: "char_wb"
-#   min_ngram: 1
-#   max_ngram: 4
+# # Configuration for Rasa NLU.
+# language: vi
+# pipeline: supervised_embeddings
+# # pipeline:
+# # - name: "WhitespaceTokenizer"
+# # - name: "RegexFeaturizer"
+# # - name: "CRFEntityExtractor"
+# # - name: "CountVectorsFeaturizer"
+# # - name: "CountVectorsFeaturizer"
+# #   analyzer: "char_wb"
+# #   min_ngram: 1
+# #   max_ngram: 4
 
-# Configuration for Rasa Core.
+# # Configuration for Rasa Core.
+# policies:
+#   - name: MemoizationPolicy
+#   - name: KerasPolicy
+#   - name: MappingPolicy
+#   - name: FallbackPolicy
+#     nlu_threshold: 0.6
+#     core_threshold: 0.3
+#     fallback_action_name: 'utter_fallback'
+
+language: "vi"
+
+pipeline:
+- name: "VietnameseTokenizer"
+- name: "sentiment_analysis.SentimentAnalyzer"
+- name: "RegexFeaturizer"
+- name: "CRFEntityExtractor"
+- name: "EntitySynonymMapper"
+- name: "CountVectorsFeaturizer"
+- name: "CountVectorsFeaturizer"
+  analyzer: "char_wb"
+  min_ngram: 1
+  max_ngram: 4
+- name: "EmbeddingIntentClassifier"
+  batch_strategy: sequence
+  
 policies:
   - name: MemoizationPolicy
   - name: KerasPolicy
   - name: MappingPolicy
-  - name: FallbackPolicy
-    nlu_threshold: 0.6
-    core_threshold: 0.3
-    fallback_action_name: 'utter_fallback'

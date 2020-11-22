@@ -105,7 +105,8 @@ responses:
       - Công nghệ phần mềm - Đồ án thực tập lập trình A - Tự chọn bắt buộc 1 - Giải
       tích 1 - Tiếng Anh ứng dụng quốc tế 3 và 4
   utter_list_teacher:
-  - text: Hiện tại kì này đang có 2 giáo viên dạy là Thầy Trần Cao Trưởng và Thầy Nguyễn Trung Tín
+  - text: Hiện tại kì này đang có 2 giáo viên dạy là Thầy Trần Cao Trưởng và Thầy
+      Nguyễn Trung Tín
 actions:
 - utter_greet
 - utter_happy
