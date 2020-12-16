@@ -19,10 +19,10 @@
 - tên [Nguyễn Văn Minh](name_user_chat)
 
 ## intent: setbot
-- Bot tên là [Nguyễn Văn Minh](name_chat)
-- Em tên là [Nguyễn Văn Minh](name_chat)
-- [Nguyễn Văn Minh](name_chat)
-- Em là [Nguyễn Văn Minh](name_chat)
+- Bot tên là [Nguyễn Việt Anh](name_chat)
+- Em tên là [Nguyễn Việt Anh](name_chat)
+- [Nguyễn Việt Anh](name_chat)
+- Em là [Nguyễn Việt Anh](name_chat)
 
 ## intent:goodbye
 - good bye
@@ -130,8 +130,6 @@
 
 ## intent:school_schedule
 - Lịch học
-- Thông tin đăng kí học
-- đăng kí học
 - lịch
 
 ## intent:school_student_info
@@ -143,7 +141,8 @@
 - Thông tin bot ?
 - Ai làm ra em
 - ai làm
-- thông tin trường
+- thông tin
+- 
 
 ## intent:school_intership
 - Liên kết ngoài
@@ -155,26 +154,152 @@
 - muốn đi thực tập
 - thực tập
 
-## intent: list_subjects
-- danh sách môn học
-- danh sách môn học kì này
-- list môn học
-- các môn học
-- các môn học kì này
-- có bao nhiêu môn học
-- có bao nhiêu môn học kì này
-- tất cả môn học
-- môn học
+## intent: tim_tailieu
+<!-- tìm tài liệu không có subject -->
+- môn học 
+- các môn học chuyên ngành của tôi
+- các môn học tôi cần học
+- danh sách môn học tôi cần học
+- những môn học tôi còn chưa học
+- những môn học tôi chưa học
+- những môn học tôi chưa qua
+- tìm tài liệu môn
+- tìm tài liệu
+
+<!-- -- tìm tài liệu có subject  -->
+- môn học [Toán rời rạc](mon_hoc) học gì?
+- môn học [Mô hình hóa 3D](mon_hoc) học gì?
+- môn học [Trí tuệ nhân tạo](mon_hoc) học gì?
+- môn [Mô hình hóa 3D](mon_hoc) học gì?
+- môn [Phương pháp nghiên cứu it](mon_hoc) học gì?
+- môn [Đa phương tiện](mon_hoc) học gì?
+- [Trí tuệ nhân tạo](mon_hoc) học gì?
+- [Đa phương tiện](mon_hoc) học gì?
+- [Lý thuyết hệ điều hành](mon_hoc) học gì?
+- tìm tài liệu [Lý thuyết hệ điều hành](mon_hoc)
+- tìm tài liệu [Lý thuyết ngôn ngữ lập trình](mon_hoc)
+- tôi muốn tìm thông tin về môn [Lập trình game](mon_hoc)
+- tôi muốn tìm thông tin về môn [Thiết kế trò chơi số](mon_hoc)
+- giới thiệu môn [Thiết kế trò chơi số](mon_hoc)
+- tổng quan về môn [đa phương tiện](mon_hoc)
+- tổng quan về môn [Mô hình hóa 3D](mon_hoc)
+- tài liệu môn [Toán rời rạc](mon_hoc)
+- tài liệu môn [Trí tuệ nhân tạo](mon_hoc)
+
+## lookup: mon_hoc
+- Toán rời rạc
+- toán rời rạc
+- toán Rời Rạc
+- Mô hình hóa 3D
+- mô hình hóa 3d
+- trí tuệ nhân tạo
+- Trí tuệ nhân tạo
+- đa phương tiện
+- Đa phương tiện
+- Lý thuyết hệ điều hành
+- lý thuyết hệ điều hành
+- Lý thuyết ngôn ngữ lập trình
+- lý thuyết ngôn ngữ lập trình
+- lý thuyết ngôn ngữ lập Trình
+- Lập trình game
+- lập trình game
+- Thiết kế trò chơi số
+- thiết kế trò chơi số
+
 
 ## intent: list_teacher
-- danh sách giáo viên
-- danh sách giáo viên kì này
-- list giáo viên
-- các giáo viên
-- các giáo viên kì này
-- có bao nhiêu giáo viên
-- có bao nhiêu giáo viên kì này
-- tất cả giáo viên
-- trong trường có bao nhiêu giáo viên
-- tất cả giáo viên trong trường
-- giáo viên
+- thầy [Trung](ten_gv) của bộ môn nào
+- thầy [Tín](ten_gv) của bộ môn nào
+- thầy [Trưởng](ten_gv) của bộ môn nào
+- thầy [Lê Anh](ten_gv) của bộ môn nào
+- cô [Ngọc](ten_gv) của bộ môn nào
+- cố [Hồng](ten-gv) của bộ môn nào
+
+- thầy [Trung](ten_gv) thuộc bộ môn
+- thầy [Tín](ten_gv) thuộc bộ môn
+- thầy [Trưởng](ten_gv) thuộc bộ môn
+- thầy [Lê Anh](ten_gv) thuộc bộ môn
+- cô [Ngọc](ten_gv) thuộc bộ môn
+- cố [Hồng](ten-gv) thuộc bộ môn
+
+## lookup:ten_gv
+- Trung
+- trung
+- Tín
+- tín
+- Trưởng
+- truong
+- Lê Anh
+- lê anh
+- Phúc
+- phúc
+- Ngọc
+- ngoc
+- ngọc
+- hồng
+- Hồng
+----
+
+
+-----------------------------------------------------------------------
+## intent: quy_che_dao_tao
+- quy chế đào tạo
+- quy chế chung
+- quy định học viện
+- quy tắc
+- quy định
+- nguyên tắc học viện
+- vi phạm quy định
+- như thế nào thì vi phạm quy tắc
+
+## intent: dia_diem_phong_ban
+- những nơi tôi có thể hỏi
+- các phòng ban tôi có thể tìm
+- các phòng ban tôi cần biết 
+- phòng ban
+- địa điểm các ban
+- địa điểm của các khoa
+- địa điểm các phòng
+- địa chỉ các khoa
+- địa chỉ khoa
+
+
+## intent: lich_tiep_sv
+- lịch tiếp sinh viên
+- thời gian tiếp sinh viên
+- bây giờ có tiếp sinh viên không?
+
+## intent: xin_giay_xac_nhan
+- giấy xác nhận
+- giấy tạm hoãn
+- cách xin giấy tạm hoãn
+- cách xin dấu xác nhận
+- cách xin dấu tạm hoãn
+
+## intent: dangky
+- đăng ký môn học
+- trang đăng ký môn học
+- tôi muốn đăng ký môn học
+
+## intent: rut_hoc_phan
+- rút học phần
+- tôi muốn rút học phần
+- điều kiện rút học phần
+## intent: khung_chuong_trinh
+- cho tôi xem khung chương trình học
+- tổng số tín chỉ tôi phải học
+- chương trình học của tôi
+- chương trình học
+
+## intent: hang_hoc_luc
+- cách tính hạng học lực
+- cách tính xếp loại
+- cách tính điểm
+- thang điểm
+
+
+## intent: thi_lai
+- Tôi có được thi lại không?
+- tôi muốn thi lại
+- tôi không muốn học lại, muốn thi lại
+- tôi sợ học lại, tôi muốn thi lại

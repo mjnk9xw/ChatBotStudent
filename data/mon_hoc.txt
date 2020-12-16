@@ -2,11 +2,11 @@ pháp luật đại cương
 lý thuyết hệ điều hành
 trí tuệ nhân tạo
 công nghệ phần mềm
-cơ sở dữ liệu
+Cơ sở dữ liệu
 thực tập kỹ thuật lập trình
 
 đồ họa máy tính
-phân tích và thiết kế hệ thống
+Phân tích và thiết kế hệ thống
 lập trình trò chơi và mô phỏng
 tiếng Anh B11
 thiết kế trò chơi số
@@ -19,3 +19,11 @@ thực tập công nghệ thông tin
 kinh tế công nghiệp
 
 trí tuệ nhân tạo nâng cao
+Hệ thống máy tính 
+Lý thuyết Hệ điều hành 
+Hệ quản trị CSDL 
+Công nghệ phần mềm 
+Đồ án thực tập lập trình A 
+Tự chọn bắt buộc 1 
+Giải tích 1 
+Tiếng Anh ứng dụng quốc tế 3 và 4 

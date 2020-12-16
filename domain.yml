@@ -18,11 +18,21 @@ intents:
 - school_student_info
 - school_introduce
 - school_intership
-- list_subjects
+- tim_tailieu
 - list_teacher
 - inform
-- search_mon_hoc_infor
-- search_teacher_infor
+
+- quy_che_dao_tao
+- dia_diem_phong_ban
+- lich_tiep_sv
+- xin_giay_xac_nhan
+- dangky
+- rut_hoc_phan
+- khung_chuong_trinh
+- hang_hoc_luc
+
+- thi_lai
+
 entities:
 - name_chat
 - name_user_chat
@@ -31,14 +41,14 @@ entities:
 - class
 - time
 - pwd
-- ho_ten
+# ---------
 - ma_mon_hoc
 - mon_hoc
-- ten
+- ten_gv
 slots:
   class:
     type: text
-  ho_ten:
+  ho_ten_gv:
     type: unfeaturized
   ma_mon_hoc:
     type: unfeaturized
@@ -52,16 +62,16 @@ slots:
     type: text
   name_user_chat:
     type: text
-  ten:
+  ten_gv:
     type: unfeaturized
 responses:
   utter_greet:
-  - text: "Em chào anh(chị) ạ. \nEm là chatbot được thiết kế để giúp anh chị giải\
-      \ quyết những thắc mắc trong phạm vi trường học,  anh chị cho em biết tên được\
+  - text: "Em chào anh(chị). \nEm là chatbot được thiết kế để giúp anh chị giải\
+      \ đáp những thắc mắc về học viện, anh chị cho em biết tên được\
       \ không ạ ?"
   utter_goodbye:
   - image: https://i.imgur.com/nGF1K8f.jpg
-    text: Hẹn gặp lại anh chị ạ ^^
+  - text: Hẹn gặp lại anh chị ạ ^^
   utter_happy:
   - text: Hì hì, anh chị khen quá lơì rồi ạ
   utter_sorry:
@@ -73,8 +83,7 @@ responses:
   utter_noworries:
   - text: Em luôn sẵn lòng giúp đỡ anh(chị) bất cứ lúc nào ạ ^^
   utter_show_ability:
-  - text: Em có thể giải quyết một số thắc mắc hoặc xem những thông tin mới nhất trong
-      phạm vi trường học. Hihi !!!
+  - text: Em có thể giải quyết một số thắc mắc hoặc xem những thông tin, thông báo mới nhất từ học viện. Hihi !!!
   utter_fallback:
   - text: Em xin lỗi, em chưa hiểu ý muốn của anh(chị) ạ. Anh chị có thể nói lại được
       không ạ
@@ -82,31 +91,109 @@ responses:
   - text: Chức năng đang hoàn thiện
   utter_school_score:
   - text: Anh chị xin vui lòng cho em thông tin anh chị với ạ, hoặc anh chị có thể
-      tự vào trang  dangkyhoc.mta.edu.vn để xem kết quả học tập của mình ở các kì.
+    Website http://dangkyhoc.mta.edu.vn -> Kết quả học tập để xem kết quả học tập của mình ở các kì.
   utter_school_new:
   - text: Chức năng đang hoàn thiện
   utter_school_web:
-  - text: 'Hiện tại trường đang có 3 trang web chính là:  mta.edu.vn trang chủ của
-      trường,  dangkyhoc.mta.edu.vn là trang đăng kí học và xem kết quả học tập,  hoctructuyen.mta.edu.vn
+  - text: Hiện tại trường đang có 3 trang web http://mta.edu.vn/ trang chủ của
+      trường,  http://dangkyhoc.mta.edu.vn là trang đăng kí học và xem kết quả học tập, http://hoctructuyen.mta.edu.vn
       là trang học online.'
   utter_school_schedule:
   - text: Chức năng đang hoàn thiện
   utter_school_student_info:
   - text: Chức năng đang hoàn thiện
   utter_school_introduce:
-  - text: Em là con bot được tạo ra từ chủ nhân Minh thuộc trường Học viện kỹ thuật
-      quân sự , hiện tại em đang được 1 ngày tuổi và tiếp tục phát triển hơn,  nếu
-      anh(chị) muốn biết thêm chi tiết khác xin vui lòng vào trang mta.edu.vn.
+  - text: "Giới thiệu chung về Học Viện Kỹ Thuật Quân Sự\n
+  Năm 1966, trước sự đòi hỏi về nhu cầu đội ngũ cán bộ kỹ thuật
+  quân sự phục vụ cho sự nghiệp chống Mỹ cứu nước, Học viện Kỹ
+  thuật Quân sự - tiền thân là “Phân hiệu II Đại học Bách khoa” được
+  thành lập theo Quyết định số 146/CP ngày 08/08/1966 của Hội đồng
+  Chính phủ với nhiệm vụ đào tạo cán bộ kỹ thuật thuộc các loại hình
+  dài hạn, chuyển tiếp (sinh viên năm cuối của các trường đại học kỹ
+  thuật dân sự), chuyển cấp. Trong điều kiện chiến tranh ác liệt, đóng
+  quân phân tán, cơ sở vật chất hầu như chưa có gì; đội ngũ giáo viên
+  cơ hữu rất ít, vừa giảng dạy, vừa tự học tập, nghiên cứu nâng cao trình
+  độ, song Học viện đã khắc phục được khó khăn, nhanh chóng bổ sung
+  các kỹ sư quân sự phục vụ cuộc kháng chiến chống Mỹ cứu nước. \n
+  Học viện Kỹ thuật Quân sự là một trường đại học của Quân đội
+  và nhà nước, là một trong những trường trọng điểm quốc gia; đặt dưới
+  sự lãnh đạo trực tiếp của Đảng ủy Quân sự trung ương và Bộ Quốc
+  phòng, sự chỉ đạo về nghiệp vụ của Bộ Giáo dục và Đào tạo. Qua quá
+  trình xây dựng và phấn đấu Học viện đã trở thành một trong những
+  trung tâm giáo dục - đào tạo, khoa học công nghệ quan trọng của Quân
+  đội và Nhà nước. "
   utter_school_intership:
   - text: Chức năng đang hoàn thiện
-  utter_list_subjects:
-  - text: Hiện tại kì này đang có 10 môn học  - Cơ sở dữ liệu - Phân tích thiết kế
-      hướng đối tượng - Hệ thống máy tính - Lý thuyết Hệ điều hành - Hệ quản trị CSDL
-      - Công nghệ phần mềm - Đồ án thực tập lập trình A - Tự chọn bắt buộc 1 - Giải
-      tích 1 - Tiếng Anh ứng dụng quốc tế 3 và 4
+  utter_subject:
+  - text: Anh muốn tìm thông tin về {mon_hoc} nào ạ
+  utter_tim_tailieu:
+  - text: Dưới đây là thông tin về môn {mon_hoc} mà anh cần tìm
+
   utter_list_teacher:
-  - text: Hiện tại kì này đang có 2 giáo viên dạy là Thầy Trần Cao Trưởng và Thầy
-      Nguyễn Trung Tín
+  - text: Đồng chí {ten_gv} đang công tác và giảng dạy tại bộ môn Khoa Học Máy Tính
+
+  utter_quy_che_dao_tao:
+  - text: Dưới đây là những quy định chung, Anh muốn hỏi về quy định nào trong học viện ạ?
+    buttons:
+    - title: Quy chế đào tạo đại học chính quy theo học chế tín chỉ hệ dân sự
+      payload: Quy chế đào tạo đại học chính quy theo học chế tín chỉ hệ dân sự
+    - title: Quy chế đào tạo đại học chính quy theo học chế tín chỉ hệ dân sự 
+      payload: Quy chế đào tạo đại học chính quy theo học chế tín chỉ hệ dân sự
+    - title: Quy định tổ chức đào tạo và xét chuẩn đầu ra về ngoại ngữ
+      payload: Quy định tổ chức đào tạo và xét chuẩn đầu ra về ngoại ngữ
+    - title: Xử lý học tập và xử lý kỷ luật
+      payload: Xử lý học tập và xử lý kỷ luật
+  
+  utter_dia_diem_phong_ban:
+  - image: https://photos.google.com/photo/AF1QipNtphevde5ZgFOoQyd_Bjs0uiZ1jM5Rwp0sSWjA
+  
+  utter_lich_tiep_sv:
+  - text: " 1. Phòng Đào tạo (Ban Quản lý đào tạo 2): \n
+    - Buổi sáng: Thứ ba (nhận phiếu yêu cầu của sinh viên)\n
+    - Buổi chiều: Thứ sáu (trả lời yêu cầu của sinh viên) \n
+    2. Khoa chuyên ngành:\n
+    - Tùy theo lịch thông báo cho sinh viên của từng Khoa \n
+    3. Lưu ý trước khi đến Phòng chức năng theo lịch tiếp, sinh
+    viên cần:\n
+    - Xác định rõ ràng vấn đề cần giải quyết.\n
+    - Đọc kỹ các quy định có liên quan.\n
+    - Tham khảo ý kiến của cố vấn học tập.\n
+    - Xem các thông báo, hỏi đáp trên trang Web.\n
+    - Nếu cần hỏi trực tiếp, yêu cầu sinh viên đến theo đúng lịch,\n
+    ghi đầy đủ vào các mẫu biểu liên quan đến công việc cần giải quyết. "
+
+  utter_xin_giay_xac_nhan:
+  - text: "Anh vui lòng đem giấy gọi nghĩa vụ lên phòng Thanh niên (Tầng 3 nhà S4) \n
+  vào buổi sáng: 8h-10h30 và buổi chiều: 14h-16h30\n
+  từ Thứ 2 đến Thứ 6"
+
+  utter_dangky:
+  - text: Website đăng ký môn học https://dangkyhoc.mta.edu.vn
+
+  utter_rut_hoc_phan:
+    -text: "Anh có thể rút học phần với điều kiện: Thời hạn được rút học phần chậm nhất là 6 tuần sau khi bắt
+    đầu học kỳ chính và 2 tuần sau khi bắt đầu học kỳ hè. Sau thời hạn
+    trên học phần vẫn được giữ trong phiếu đăng ký học, nếu sinh viên
+    không đi học sẽ được xem như tự ý bỏ học và phải nhận điểm F cho
+    học phần đó.\n
+    - Những sinh viên có lý do đặc biệt như bị ốm hoặc tai nạn
+    phải nghỉ học nhiều ngày có thể nộp đơn xin rút học phần có xác
+    nhận của Chủ nhiệm Khoa và kèm theo những giấy tờ minh chứng
+    cần thiết, chậm nhất 2 tuần trước khi kết thúc tuần học cuối cùng của
+    lớp học phần đó."
+
+  utter_khung_chuong_trinh:
+    - image: https://photos.google.com/photo/AF1QipNk6gQtz94ySH7z5nmDevlvMjeOkO2svrZtra2-
+  utter_hang_hoc_luc:
+    -text: https://photos.google.com/photo/AF1QipNDiteOUrf96NgRIbaD7OUeSFyxgv7ZGq2Q7rNH
+  
+  
+  utter_thi_lai: 
+    -text: "Không được thi lại. Nếu là điểm F, chắc chắn phải học lại,
+thi lại. Nếu là điểm D, sinh viên phải đăng ký học lại rồi mới được
+thi để cải thiện điểm."
+  
+
 actions:
 - utter_greet
 - utter_happy
@@ -125,6 +212,18 @@ actions:
 - utter_school_intership
 - utter_getinfo
 - utter_setbot
-- utter_list_subjects
+- utter_tim_tailieu
 - utter_list_teacher
 - action_search_infor
+################
+- utter_utter_subject
+- utter_quy_che_dao_tao
+- utter_dia_diem_phong_ban
+- utter_lich_tiep_sv
+- utter_xin_giay_xac_nhan
+- utter_dangky
+- utter_rut_hoc_phan
+- utter_khung_chuong_trinh
+- utter_hang_hoc_luc
+
+- utter_thi_lai
