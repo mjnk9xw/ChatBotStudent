@@ -21,7 +21,6 @@ intents:
 - tim_tailieu
 - list_teacher
 - inform
-
 - quy_che_dao_tao
 - dia_diem_phong_ban
 - lich_tiep_sv
@@ -30,9 +29,9 @@ intents:
 - rut_hoc_phan
 - khung_chuong_trinh
 - hang_hoc_luc
-
 - thi_lai
-
+- search_mon_hoc_infor
+- search_teacher_infor
 entities:
 - name_chat
 - name_user_chat
@@ -41,13 +40,17 @@ entities:
 - class
 - time
 - pwd
-# ---------
 - ma_mon_hoc
 - mon_hoc
 - ten_gv
+- ho_ten
+- ten
+- ten-gv
 slots:
   class:
     type: text
+  ho_ten:
+    type: unfeaturized
   ho_ten_gv:
     type: unfeaturized
   ma_mon_hoc:
@@ -60,18 +63,21 @@ slots:
     type: text
   name_chat:
     type: text
+  name_user_c hat:
+    type: unfeaturized
   name_user_chat:
     type: text
+  ten:
+    type: unfeaturized
   ten_gv:
     type: unfeaturized
 responses:
   utter_greet:
-  - text: "Em chào anh(chị). \nEm là chatbot được thiết kế để giúp anh chị giải\
-      \ đáp những thắc mắc về học viện, anh chị cho em biết tên được\
-      \ không ạ ?"
+  - text: "Em chào anh(chị). \nEm là chatbot được thiết kế để giúp anh chị giải đáp\
+      \ những thắc mắc về học viện, anh chị cho em biết tên được không ạ ?"
   utter_goodbye:
   - image: https://i.imgur.com/nGF1K8f.jpg
-  - text: Hẹn gặp lại anh chị ạ ^^
+    text: Hẹn gặp lại anh chị ạ ^^
   utter_happy:
   - text: Hì hì, anh chị khen quá lơì rồi ạ
   utter_sorry:
@@ -83,117 +89,179 @@ responses:
   utter_noworries:
   - text: Em luôn sẵn lòng giúp đỡ anh(chị) bất cứ lúc nào ạ ^^
   utter_show_ability:
-  - text: Em có thể giải quyết một số thắc mắc hoặc xem những thông tin, thông báo mới nhất từ học viện. Hihi !!!
+  - text: Em có thể giải quyết một số thắc mắc hoặc xem những thông tin, thông báo
+      mới nhất từ học viện. Hihi !!!
   utter_fallback:
   - text: Em xin lỗi, em chưa hiểu ý muốn của anh(chị) ạ. Anh chị có thể nói lại được
       không ạ
   utter_school_rules:
-  - text: Chức năng đang hoàn thiện
+  - text: "1. Những sinh viên có hành vi vi phạm  nội quy, quy định của Học viện,\
+      \ quy chế học tập, rèn luyện thì tùy tính chất,  mức độ, hậu quả của  hành \
+      \ vi  vi  phạm,  phải  chịu  một  trong  các  hình  thức  kỷluật sau: \n  a)\
+      \ Khiển trách: áp dụng đối  với sinh viên có hành vi vi phạm lần đầu nhưng chưa\
+      \ đến mức độ nghiêm trọng; \n  b) Cảnh cáo: áp dụng đối với sinh viên đã bị\
+      \ khiển trách mà tái phạm  hoặc  vi  phạm ở mức độ  nhẹ  nhưng  hành  vi  vi\
+      \  phạm  có  tính  chất  thường xuyên hoặc  mới  vi  phạm  lần đầu nhưng  mức\
+      \ độ tương đối nghiêm trọng; \n  c) Đình  chỉ học  tập  1  năm  học:  áp  dụng\
+      \ đối  với  những  sinh  viên đang trong thời gian bị cảnh  cáo  mà  vẫn vi\
+      \ phạm  kỷ luật  hoặc vi phạm nghiêm trọng các hành vi sinh viên không được\
+      \ làm; \n  d) Buộc thôi học: áp dụng đối với sinh viên đang trong thời gian\
+      \ bị đình chỉ học tập mà vẫn tiếp tục vi phạm kỷ luật hoặc vi phạm lần đầu \
+      \ nhưng  có  tính  chất  và  mức độ  vi  phạm  nghiêm  trọng,  gây  ảnh hưởng\
+      \ xấu đến Học viện và xã hội; vi phạm pháp luật phải chấp hành hình phạt tù\
+      \ (kể cả trường hợp bị phạt tù được hưởng án treo). \n  2.  Hình  thức  kỷ \
+      \ luật  của  sinh  viên  phải được  ghi  vào  hồ sơsinh  viên.  Trường  hợp\
+      \  sinh  viên  bị kỷ  luật  mức đình  chỉ học  tập  1  năm  học  và  buộc  thôi\
+      \  học,  Học  viện  sẽ gửi  thông  báo  cho  địa phương và gia đình sinh viên\
+      \  biết để quản lý, giáo dục."
   utter_school_score:
   - text: Anh chị xin vui lòng cho em thông tin anh chị với ạ, hoặc anh chị có thể
-    Website http://dangkyhoc.mta.edu.vn -> Kết quả học tập để xem kết quả học tập của mình ở các kì.
+      Website http://dangkyhoc.mta.edu.vn -> Kết quả học tập để xem kết quả học tập
+      của mình ở các kì.
   utter_school_new:
-  - text: Chức năng đang hoàn thiện
+  - text: Thông báo mới nhất của Học viện các bạn có thể truy cập vào trang http://mta.edu.vn/
+      và xem phần thông báo để cập nhật thông tin
   utter_school_web:
-  - text: Hiện tại trường đang có 3 trang web http://mta.edu.vn/ trang chủ của
-      trường,  http://dangkyhoc.mta.edu.vn là trang đăng kí học và xem kết quả học tập, http://hoctructuyen.mta.edu.vn
+  - text: Hiện tại trường đang có 3 trang web http://mta.edu.vn/ trang chủ của trường,  http://dangkyhoc.mta.edu.vn
+      là trang đăng kí học và xem kết quả học tập, http://hoctructuyen.mta.edu.vn
       là trang học online.'
   utter_school_schedule:
-  - text: Chức năng đang hoàn thiện
+  - text: "Sau  khi  Thời  khoá  biểu  dự  kiến được  công  bố,  sinh  viên  gặp Cố\
+      \ vấn  học  tập  (CVHT)  để   được  cố vấn  về  các  học  phần đăng  ký  phù\
+      \  hợp  với  tiến  trình  học  của  từng  chuyên  ngành.  Các  học  phần mỗi\
+      \ sinh viên được phép đăng ký bao gồm:  \n  - Các học phần được phép đăng ký\
+      \ học lần đầu;  \n  - Các học phần còn nợ;  \n  - Các học phần muốn cải thiện\
+      \ điểm.  \n  Các học phần đăng ký phải thỏa mãn các yêu cầu:  \n  - Không trùng\
+      \ lịch học theo Thời khoá biểu dự kiến;   \n  - Đã tích lũy được học phần tiên\
+      \ quyết (nếu có); \n  -  Tuân  thủđúng  tiến  trình  học  của  chuyên  ngành.\
+      \  Sinh  viên  đang  theo  học  học  phần  học  trước  (kể cả học  phần  tiên\
+      \  quyết)  vẫn được đăng ký các học phần tiếp theo. Tuy nhiên, sinh viên phải\
+      \ điều chỉnh các môn học đăng ký nếu điểm của học phần tiên quyết nhận được\
+      \ vào cuối học kỳ dưới 5,00 (thang điểm 10); \n  - Sinh viên phải đăng ký không\
+      \ ít hơn 10 tín chỉ (đối với sinh viên xếp hạng học lực yếu), từ 14 đến 25 tín\
+      \ chỉ (kể cả các học phần học lại) đối với sinh viên xếp hạng học lực trung\
+      \ bình.  \n  Ngoài ra, sinh viên được phép đăng ký các học phần không có trong\
+      \ Thời khoá biểu dự kiến. Học viện sẽ căn cứ vào số lượng đăng ký  các  học\
+      \  phần này, khả năng đảm  nhiệm  của giảng viên và cơ sởvật chất phục vụ giảng\
+      \ dạy để quyết định mở lớp hay không."
   utter_school_student_info:
   - text: Chức năng đang hoàn thiện
   utter_school_introduce:
-  - text: "Giới thiệu chung về Học Viện Kỹ Thuật Quân Sự\n
-  Năm 1966, trước sự đòi hỏi về nhu cầu đội ngũ cán bộ kỹ thuật
-  quân sự phục vụ cho sự nghiệp chống Mỹ cứu nước, Học viện Kỹ
-  thuật Quân sự - tiền thân là “Phân hiệu II Đại học Bách khoa” được
-  thành lập theo Quyết định số 146/CP ngày 08/08/1966 của Hội đồng
-  Chính phủ với nhiệm vụ đào tạo cán bộ kỹ thuật thuộc các loại hình
-  dài hạn, chuyển tiếp (sinh viên năm cuối của các trường đại học kỹ
-  thuật dân sự), chuyển cấp. Trong điều kiện chiến tranh ác liệt, đóng
-  quân phân tán, cơ sở vật chất hầu như chưa có gì; đội ngũ giáo viên
-  cơ hữu rất ít, vừa giảng dạy, vừa tự học tập, nghiên cứu nâng cao trình
-  độ, song Học viện đã khắc phục được khó khăn, nhanh chóng bổ sung
-  các kỹ sư quân sự phục vụ cuộc kháng chiến chống Mỹ cứu nước. \n
-  Học viện Kỹ thuật Quân sự là một trường đại học của Quân đội
-  và nhà nước, là một trong những trường trọng điểm quốc gia; đặt dưới
-  sự lãnh đạo trực tiếp của Đảng ủy Quân sự trung ương và Bộ Quốc
-  phòng, sự chỉ đạo về nghiệp vụ của Bộ Giáo dục và Đào tạo. Qua quá
-  trình xây dựng và phấn đấu Học viện đã trở thành một trong những
-  trung tâm giáo dục - đào tạo, khoa học công nghệ quan trọng của Quân
-  đội và Nhà nước. "
+  - text: "Giới thiệu chung về Học Viện Kỹ Thuật Quân Sự\n Năm 1966, trước sự đòi\
+      \ hỏi về nhu cầu đội ngũ cán bộ kỹ thuật quân sự phục vụ cho sự nghiệp chống\
+      \ Mỹ cứu nước, Học viện Kỹ thuật Quân sự - tiền thân là “Phân hiệu II Đại học\
+      \ Bách khoa” được thành lập theo Quyết định số 146/CP ngày 08/08/1966 của Hội\
+      \ đồng Chính phủ với nhiệm vụ đào tạo cán bộ kỹ thuật thuộc các loại hình dài\
+      \ hạn, chuyển tiếp (sinh viên năm cuối của các trường đại học kỹ thuật dân sự),\
+      \ chuyển cấp. Trong điều kiện chiến tranh ác liệt, đóng quân phân tán, cơ sở\
+      \ vật chất hầu như chưa có gì; đội ngũ giáo viên cơ hữu rất ít, vừa giảng dạy,\
+      \ vừa tự học tập, nghiên cứu nâng cao trình độ, song Học viện đã khắc phục được\
+      \ khó khăn, nhanh chóng bổ sung các kỹ sư quân sự phục vụ cuộc kháng chiến chống\
+      \ Mỹ cứu nước. \n Học viện Kỹ thuật Quân sự là một trường đại học của Quân đội\
+      \ và nhà nước, là một trong những trường trọng điểm quốc gia; đặt dưới sự lãnh\
+      \ đạo trực tiếp của Đảng ủy Quân sự trung ương và Bộ Quốc phòng, sự chỉ đạo\
+      \ về nghiệp vụ của Bộ Giáo dục và Đào tạo. Qua quá trình xây dựng và phấn đấu\
+      \ Học viện đã trở thành một trong những trung tâm giáo dục - đào tạo, khoa học\
+      \ công nghệ quan trọng của Quân đội và Nhà nước. "
   utter_school_intership:
-  - text: Chức năng đang hoàn thiện
-  utter_subject:
-  - text: Anh muốn tìm thông tin về {mon_hoc} nào ạ
+  - text: "Qua 20 năm xây dựng và phát triển (1996-2016) Khoa Công nghệ thông tin,\
+      \ Học viện kỹ thuật quân sự đã đào tạo một khối lượng lớn nguồn nhân lực CNTT\
+      \ cho đất nước. Trong quá trình đó khoa luôn chú trọng, chủ động liên hệ với\
+      \ các doanh nghiệp, định hướng cho sinh viên để sau khi sinh viên ra trường\
+      \ có thể đáp ứng công việc ở các doanh nghiệp đồng thời doanh nghiệp có thể\
+      \ tuyển dụng được nguồn nhân lực đáp ứng yêu cầu đặt ra.  Một số doanh nghiệp\
+      \ đã có quan hệ chặt chẽ với Khoa CNTT, Học viện KTQS trong thời gian vừa qua.\n\
+      \  Ví dụ : Samsung, fpt, viettel, vng, telsoft, ..."
+  utter_subjects:
+  - text: Anh muốn tìm thông tin về  nào ạ
   utter_tim_tailieu:
   - text: Dưới đây là thông tin về môn {mon_hoc} mà anh cần tìm
-
   utter_list_teacher:
   - text: Đồng chí {ten_gv} đang công tác và giảng dạy tại bộ môn Khoa Học Máy Tính
-
   utter_quy_che_dao_tao:
-  - text: Dưới đây là những quy định chung, Anh muốn hỏi về quy định nào trong học viện ạ?
-    buttons:
-    - title: Quy chế đào tạo đại học chính quy theo học chế tín chỉ hệ dân sự
-      payload: Quy chế đào tạo đại học chính quy theo học chế tín chỉ hệ dân sự
-    - title: Quy chế đào tạo đại học chính quy theo học chế tín chỉ hệ dân sự 
-      payload: Quy chế đào tạo đại học chính quy theo học chế tín chỉ hệ dân sự
-    - title: Quy định tổ chức đào tạo và xét chuẩn đầu ra về ngoại ngữ
-      payload: Quy định tổ chức đào tạo và xét chuẩn đầu ra về ngoại ngữ
-    - title: Xử lý học tập và xử lý kỷ luật
-      payload: Xử lý học tập và xử lý kỷ luật
-  
+  - buttons:
+    - payload: Quy chế đào tạo đại học chính quy theo học chế tín chỉ hệ dân sự
+      title: Quy chế đào tạo đại học chính quy theo học chế tín chỉ hệ dân sự
+    - payload: Quy chế đào tạo đại học chính quy theo học chế tín chỉ hệ dân sự
+      title: Quy chế đào tạo đại học chính quy theo học chế tín chỉ hệ dân sự
+    - payload: Quy định tổ chức đào tạo và xét chuẩn đầu ra về ngoại ngữ
+      title: Quy định tổ chức đào tạo và xét chuẩn đầu ra về ngoại ngữ
+    - payload: Xử lý học tập và xử lý kỷ luật
+      title: Xử lý học tập và xử lý kỷ luật
+    text: Dưới đây là những quy định chung, Anh muốn hỏi về quy định nào trong học
+      viện ạ?
   utter_dia_diem_phong_ban:
-  - image: https://photos.google.com/photo/AF1QipNtphevde5ZgFOoQyd_Bjs0uiZ1jM5Rwp0sSWjA
-  
+  - text: 'Địa điểm trường là số 236 hoàng quốc việt , vì thế bạn nên thuê những phòng
+      trọ xung quanh trường để thuận tiện đi lại như : Cổ Nhuế, Trần Cung, Cầu Giấy,
+      Mỹ Đình ...'
   utter_lich_tiep_sv:
-  - text: " 1. Phòng Đào tạo (Ban Quản lý đào tạo 2): \n
-    - Buổi sáng: Thứ ba (nhận phiếu yêu cầu của sinh viên)\n
-    - Buổi chiều: Thứ sáu (trả lời yêu cầu của sinh viên) \n
-    2. Khoa chuyên ngành:\n
-    - Tùy theo lịch thông báo cho sinh viên của từng Khoa \n
-    3. Lưu ý trước khi đến Phòng chức năng theo lịch tiếp, sinh
-    viên cần:\n
-    - Xác định rõ ràng vấn đề cần giải quyết.\n
-    - Đọc kỹ các quy định có liên quan.\n
-    - Tham khảo ý kiến của cố vấn học tập.\n
-    - Xem các thông báo, hỏi đáp trên trang Web.\n
-    - Nếu cần hỏi trực tiếp, yêu cầu sinh viên đến theo đúng lịch,\n
-    ghi đầy đủ vào các mẫu biểu liên quan đến công việc cần giải quyết. "
-
+  - text: " 1. Phòng Đào tạo (Ban Quản lý đào tạo 2): \n - Buổi sáng: Thứ ba (nhận\
+      \ phiếu yêu cầu của sinh viên)\n - Buổi chiều: Thứ sáu (trả lời yêu cầu của\
+      \ sinh viên) \n 2. Khoa chuyên ngành:\n - Tùy theo lịch thông báo cho sinh viên\
+      \ của từng Khoa \n 3. Lưu ý trước khi đến Phòng chức năng theo lịch tiếp, sinh\
+      \ viên cần:\n - Xác định rõ ràng vấn đề cần giải quyết.\n - Đọc kỹ các quy định\
+      \ có liên quan.\n - Tham khảo ý kiến của cố vấn học tập.\n - Xem các thông báo,\
+      \ hỏi đáp trên trang Web.\n - Nếu cần hỏi trực tiếp, yêu cầu sinh viên đến theo\
+      \ đúng lịch,\n ghi đầy đủ vào các mẫu biểu liên quan đến công việc cần giải\
+      \ quyết. "
   utter_xin_giay_xac_nhan:
-  - text: "Anh vui lòng đem giấy gọi nghĩa vụ lên phòng Thanh niên (Tầng 3 nhà S4) \n
-  vào buổi sáng: 8h-10h30 và buổi chiều: 14h-16h30\n
-  từ Thứ 2 đến Thứ 6"
-
+  - text: "Anh vui lòng đem giấy gọi nghĩa vụ lên phòng Thanh niên (Tầng 3 nhà S4)\
+      \ \n vào buổi sáng: 8h-10h30 và buổi chiều: 14h-16h30\n từ Thứ 2 đến Thứ 6"
   utter_dangky:
   - text: Website đăng ký môn học https://dangkyhoc.mta.edu.vn
-
   utter_rut_hoc_phan:
-    -text: "Anh có thể rút học phần với điều kiện: Thời hạn được rút học phần chậm nhất là 6 tuần sau khi bắt
-    đầu học kỳ chính và 2 tuần sau khi bắt đầu học kỳ hè. Sau thời hạn
-    trên học phần vẫn được giữ trong phiếu đăng ký học, nếu sinh viên
-    không đi học sẽ được xem như tự ý bỏ học và phải nhận điểm F cho
-    học phần đó.\n
-    - Những sinh viên có lý do đặc biệt như bị ốm hoặc tai nạn
-    phải nghỉ học nhiều ngày có thể nộp đơn xin rút học phần có xác
-    nhận của Chủ nhiệm Khoa và kèm theo những giấy tờ minh chứng
-    cần thiết, chậm nhất 2 tuần trước khi kết thúc tuần học cuối cùng của
-    lớp học phần đó."
-
+  - text: "1.  Sau  thời  gian  đăng  ký  điều  chỉnh,  nếu  sinh  viên  theo  học\
+      \ thấy không thể hoàn thành tốt khối lượng học tập đã đăng ký thì có thể  làm\
+      \  đơn xin rút học phần (các học phần thuộc nhóm không bắt buộc) để không đánh\
+      \ giá kết quả học phần đó, với điều kiện không vi  phạm  khối  lượng đăng  ký\
+      \  như quy định  trong  khoản  4  Điều  15.  Học  phần đã  rút  thì  không \
+      \ tính  điểm  chính  thức,  nhưng  vẫn  phải tính  học  phí  và  được  ghi \
+      \ chú  (điểm  W)  trong  hồ sơ học  tập  của sinh viên. \n  2. Thời hạn được\
+      \ rút học phần chậm nhất là 6 tuần sau khi bắt đầu học kỳ chính và 2 tuần sau\
+      \ khi bắt đầu học kỳ hè. Sau thời hạn trên học phần vẫn được giữ trong phiếu\
+      \ đăng ký học, nếu sinh viên không đi học sẽđược xem như tự ý bỏ học và phải\
+      \ nhận điểm F cho học phần đó. \n  3.  Những  sinh  viên  có  lý  do  đặc  biệt\
+      \  như bịốm  hoặc  tai  nạn phải  nghỉ học  nhiều  ngày  có  thể nộp đơn  xin\
+      \  rút  học  phần  có  xác  nhận  của  Chủ  nhiệm  Khoa  và  kèm  theo  những\
+      \  giấy tờ  minh  chứng cần thiết, chậm nhất 2 tuần trước khi kết thúc tuần\
+      \ học cuối cùng của lớp học."
   utter_khung_chuong_trinh:
-    - image: https://photos.google.com/photo/AF1QipNk6gQtz94ySH7z5nmDevlvMjeOkO2svrZtra2-
+  - image: https://photos.google.com/photo/AF1QipNk6gQtz94ySH7z5nmDevlvMjeOkO2svrZtra2-
+    text: khung chương trình
   utter_hang_hoc_luc:
-    -text: https://photos.google.com/photo/AF1QipNDiteOUrf96NgRIbaD7OUeSFyxgv7ZGq2Q7rNH
-  
-  
-  utter_thi_lai: 
-    -text: "Không được thi lại. Nếu là điểm F, chắc chắn phải học lại,
-thi lại. Nếu là điểm D, sinh viên phải đăng ký học lại rồi mới được
-thi để cải thiện điểm."
-  
-
+  - text: "Hạng học lực chia theo thang điểm hệ 4, với điểm chữ bao gồm: F, D, D+,\
+      \ C, C+, B, B+, A, A+ \n  Bằng tốt nghiệp đánh giá theo thang điểm hệ 4 như\
+      \ sau: \n  Bằng Xuất sắc: Nếu điểm GPA từ 3.60 – 4.00\n  Bằng Giỏi: Nếu điểm\
+      \ GPA từ 3.20 – 3.59\n  Bằng Khá: Nếu điểm GPA từ 2.50 – 3.19\n  Bằng Trung\
+      \ bình: Nếu điểm GPA từ 2.00 – 2.49\n "
+  - text: "Hạng  học  lực  là  việc  phân  loại  kết  quả học  tập  của  sinh  viên\
+      \  sau mỗi học kỳ. \n  Sau  mỗi  học  kỳ,  sinh  viên  có  điểm  trung  bình\
+      \  chung  học  tập của học kỳ (xem Điều 27 – trong quy chế tạm thời trong đào\
+      \ tạo học chế tín chỉ của Học viện) với các loại xuất sắc, khá, giỏi, trung\
+      \ bình và không đạt (yếu, kém). \n  Với sinh viên đạt loại xuất sắc, giỏi, khá\
+      \ và trung bình thì việc học  tập  trong  học  kỳ kế  tiếp  không  có  nhiều\
+      \  khó  khăn.  \n  Tuy  nhiên,  với sinh viên không đạt (nhưng chưa tới mức\
+      \ bị buộc thôi học) chắc chắn việc học tập có khó khăn do năng lực  học tập\
+      \ yếu. \n  Nếu sinh viên tiếp tục học với khối lượng lớn như những sinh viên\
+      \ đạt  xếp loại  kết  quả học  tập  khác  thì  nguy  cơ  sinh  viên  có  thể\
+      \ tiếp tục không đạt kết quả học tập theo yêu cầu là hoàn toàn có thểxảy ra."
+  utter_thi_lai:
+  - text: Năm cuối, theo quy định của nhà trường với những môn đã có điểm thành phần
+      thì mới được phép thi lại và tổ chức thi lại
+  - text: "1.  Sinh  viên  phải đăng  ký  học  lại  các  học  phần  bắt  buộc  có\
+      \  điểm tổng kết không đạt ở các học kỳ trước.   \n  2. Đối  với  các  học \
+      \ phần  tự  chọn  không  đạt,  sinh  viên  được phép đăng ký học lại học phần\
+      \ đó hoặc chọn học phần khác thay thếtrong số các học phần tự chọn quy định\
+      \ trong từng CTĐT.  \n  3. Sinh  viên  đăng  ký  học  lại  tự sắp  xếp  kế \
+      \ hoạch  sao  cho  không  vi  phạm  khối  lượng đăng  ký  như  quy  định  trong\
+      \  khoản  4  Điều 15. \n  4. Đối  với  môn  học bất kỳđã  có  kết  quả đạt,\
+      \ sinh  viên  được phép đăng  ký  học lại để cải thiệnđiểm. Điểm  của  tất \
+      \ cả  các  lần học được  ghi  trong  bảng điểm  các  học kỳ  và  trong  bảng\
+      \ điểm tốt nghiệp. Kết  quả  cao  nhất trong  các  lần  học sẽ được  chọn để\
+      \ tính vào điểm trung bình tích lũy. \n  5. Thủ tục đăng  ký  học  lại  hoặc\
+      \  học  lại để cải  thiện điểm hoàn  toàn  giống  như  thủ tục đăng  ký  học\
+      \  phần  lần đầu.  Sinh  viên  có thểđăng ký vào bất kỳ học kỳ nào mà học phần\
+      \ đó có mở lớp."
 actions:
 - utter_greet
 - utter_happy
@@ -215,8 +283,7 @@ actions:
 - utter_tim_tailieu
 - utter_list_teacher
 - action_search_infor
-################
-- utter_utter_subject
+- utter_subjects
 - utter_quy_che_dao_tao
 - utter_dia_diem_phong_ban
 - utter_lich_tiep_sv
@@ -225,5 +292,4 @@ actions:
 - utter_rut_hoc_phan
 - utter_khung_chuong_trinh
 - utter_hang_hoc_luc
-
 - utter_thi_lai
